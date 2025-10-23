@@ -4,12 +4,12 @@
 void linked_list_add_common(void** dynamic_list_ptr,void* item,size_t item_size,size_t next_member_offsetof,void* (*alloc_func)(size_t size));
 
 // item is passed by value
-#define ll_push(ll_ptr, item, alloc_function) linked_list_add_common((void**)(ll_ptr),&(item),sizeof(item), offsetof(__typeof__(item), next), (alloc_function))
+#define ll_push(ll_ptr, item, alloc_function) (linked_list_add_common((void**)(ll_ptr),&(item),sizeof(item), offsetof(__typeof__(item), next), (alloc_function)))
 
 // returns NULL on accessing out of bounds
 void* linked_list_get_at(void* linked_list, size_t next_member_offsetof, size_t i);
 
-#define ll_at(ll, index) (__typeof__(ll))linked_list_get_at(ll, offsetof(__typeof__(*(ll)), next), index)
+#define ll_at(ll, index) ((__typeof__(ll))linked_list_get_at(ll, offsetof(__typeof__(*(ll)), next), index))
 
 #ifdef LINKED_LIST_IMPLEMENTATION
 #include <stddef.h>
