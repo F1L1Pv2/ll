@@ -39,10 +39,8 @@ int main(){
 
     printf("--------- listing -----------\n");
 
-    Baz* current_baz = bazzess;
-    while(current_baz){
-        print_baz(current_baz);
-        current_baz = current_baz->next;
+    for(Baz* baz = bazzess; baz != NULL; baz = baz->next){
+        print_baz(baz);
     }
 
     return 0;
